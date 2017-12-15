@@ -1,20 +1,31 @@
+<head>
+  <link rel=StyleSheet href="style.css">
+</head>
+<p class="theonlyone">Open the console and type game() to get started. Endless fun in an ocean of internet.
+<br>You can also do game(x) where x is the number of rounds. Nothing bigger than the 64bit floats JS takes</p>
 <script>
+
+// this function forces the computer to choose a move
   function computerPlay() {
    let choices = ["Rock", "Paper", "Scissors"];
    return choice = choices[Math.floor(Math.random() * 3)];
   }
 
+//this function makes the computer act out a simulated round of RPS
   function playRound(playerSelection, computerSelection = computerPlay()) {
 
+//making the player selection standardised, and if it's not one of the three choices we throw it out
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection != "rock" && playerSelection != "paper" && playerSelection && "scissors") {
       return "You need to play one of the three objects";
     }
 
+//setting up some variables for different outcomes
     let win = ("You win! " + playerSelection + " beats " + computerSelection + "!");
     let lose = ("You loser. " + computerSelection + " beats " + playerSelection + ".");
     let draw = ("You drew it, " + playerSelection + " bounces harmlessly off " + computerSelection + ".");
 
+//a mess of if statments to see what outcome happened, i'm sure this can be improved
     if (computerSelection === "Rock") {
       if (playerSelection === "rock") {
         return draw;
@@ -39,6 +50,32 @@
       } else {
         return lose;
       }
+    }
+  }
+
+//this is a 5 round game by default = but you can add any number of rounds
+  function game(num = 0) {
+    wins = 0;
+    losses = 0;
+
+    for (var i = 0; i < num; i++) {
+      result = playRound(prompt("What's your hand config?"))
+      console.log(result)
+      if (result.substring(4, 5) == "w") {
+        wins += 1;
+      } else if (result.substring(4, 5) == "l") {
+        losses += 1;
+      } else if (result.substring(4, 5) == "n") {
+        i--;
+      }
+    }
+
+    if (wins > losses) {
+      return "You won enough";
+    } else if (wins == losses) {
+      return "It's a draw overall";
+    } else {
+      return "You can't even guess good";
     }
   }
 </script>
