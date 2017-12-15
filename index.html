@@ -16,7 +16,7 @@
 
 //making the player selection standardised, and if it's not one of the three choices we throw it out
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection && "scissors") {
+    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
       return "You need to play one of the three objects";
     }
 
@@ -54,10 +54,11 @@
   }
 
 //this is a 5 round game by default = but you can add any number of rounds
-  function game(num = 0) {
+  function game(num = 5) {
     wins = 0;
     losses = 0;
 
+//loops through for every number specified, and tots up wins and losses
     for (var i = 0; i < num; i++) {
       result = playRound(prompt("What's your hand config?"))
       console.log(result)
@@ -70,6 +71,7 @@
       }
     }
 
+//compares the scores to see what the final tally is
     if (wins > losses) {
       return "You won enough";
     } else if (wins == losses) {
