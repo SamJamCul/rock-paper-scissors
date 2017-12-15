@@ -1,0 +1,44 @@
+<script>
+  function computerPlay() {
+   let choices = ["Rock", "Paper", "Scissors"];
+   return choice = choices[Math.floor(Math.random() * 3)];
+  }
+
+  function playRound(playerSelection, computerSelection = computerPlay()) {
+
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection && "scissors") {
+      return "You need to play one of the three objects";
+    }
+
+    let win = ("You win! " + playerSelection + " beats " + computerSelection + "!");
+    let lose = ("You loser. " + computerSelection + " beats " + playerSelection + ".");
+    let draw = ("You drew it, " + playerSelection + " bounces harmlessly off " + computerSelection + ".");
+
+    if (computerSelection === "Rock") {
+      if (playerSelection === "rock") {
+        return draw;
+      } else if (playerSelection === "scissors") {
+        return lose;
+      } else {
+        return win;
+      }
+    } else if (computerSelection === "Paper") {
+      if (playerSelection === "rock") {
+        return lose;
+      } else if (playerSelection === "scissors") {
+        return win;
+      } else {
+        return draw;
+      }
+    } else {
+      if (playerSelection === "rock") {
+        return win;
+      } else if (playerSelection === "scissors") {
+        return draw;
+      } else {
+        return lose;
+      }
+    }
+  }
+</script>
