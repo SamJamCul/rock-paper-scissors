@@ -14,10 +14,19 @@ buttons.forEach((button) => {
     tally.removeChild(tally.childNodes[0]);
     let result = document.createElement('p');
     let scores = document.createElement('p');
-    scores.textContent = ("Wins: " + wins + " Losses: " + losses + " Draws: " + draws + ".")
     result.textContent = playRound(button.id);
+    scores.textContent = ("Wins: " + wins + " Losses: " + losses + " Draws: " + draws + ".")
     results.appendChild(result);
     tally.appendChild(scores);
+    if (played === 5) {
+      if (wins > losses) {
+        alert("you have won the best of 5");
+      } else if (wins < losses) {
+        alert("you couldn't even win a best of 5");
+      } else {
+        alert("you drew! in 5 games you managed to draw, what an achievement")
+      }
+    }
   })
 });
 
